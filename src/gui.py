@@ -2,7 +2,7 @@ __version__ = "Beta"
 
 import base64
 
-app_name = "Ask DCMR"
+app_name = "Ask FAR"
 
 
 # BOILERPLATE
@@ -54,7 +54,7 @@ def index_pdf_file2():
 
 
 def ui_question():
-	st.write('## Ask the DCMR a Question!')
+	st.write('## Ask the FAR a Question!')
 	st.text_area('question', key='question', height=100, placeholder='Enter question here', help='', label_visibility="collapsed", disabled=False)
 
 # REF: Hypotetical Document Embeddings
