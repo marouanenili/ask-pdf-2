@@ -164,6 +164,7 @@ timer = 1
 def app():
 	global timer
 	st.sidebar.beta_expander("Navigation", expanded=False)
+	st.set_page_config(initial_sidebar_state="collapsed")
 	selection = st.sidebar.radio("Go to", ["Public", "Admin"], index=0)
 	if selection == "Admin":
 		provided_key = st.text_input("Enter the secret key to access this page:",type="password")
