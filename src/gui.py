@@ -54,6 +54,7 @@ def index_pdf_file2():
 
 
 def ui_question():
+	st.title('First Came FAR, Then Came FARGPT')
 	st.write('## Ask the FAR a Question!')
 	st.text_area('question', key='question', height=100, placeholder='Enter question here', help='', label_visibility="collapsed", disabled=False)
 
