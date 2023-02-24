@@ -2,6 +2,7 @@ from sklearn.metrics.pairwise import cosine_distances
 import pdf
 import ai
 import re
+import streamlit
 
 def use_key(api_key):
 	ai.use_key(api_key)
