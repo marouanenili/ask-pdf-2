@@ -2,7 +2,7 @@ __version__ = "Beta"
 
 import base64
 
-app_name = "Ask FAR"
+app_name = "FARWizard - Ask the FAR - Beta"
 
 
 # BOILERPLATE
