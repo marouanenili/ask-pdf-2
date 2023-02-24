@@ -10,7 +10,7 @@ import csv
 import streamlit as st
 import pandas as pd
 import time
-
+api_key = st.secrets["API_KEY"] 
 
 st.set_page_config(layout='centered', page_title=f'{app_name} {__version__}',initial_sidebar_state="collapsed")
 ss = st.session_state
