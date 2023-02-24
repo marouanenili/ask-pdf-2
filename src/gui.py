@@ -58,7 +58,8 @@ def ui_question():
 	st.header('Why FARGPT and why not ChatGPT?')
 	st.caption('FARGPT is built to semantically search the FAR and provide answers and references whereas ChatGPT searches its entire collection of text to find answers which may not be related to the FAR at all.')
 	st.caption('FARGPT searches the FAR PDF located on Acquisition.gov: https://www.acquisition.gov/sites/default/files/current/far/pdf/FAR.pdf')
-	st.caption('_*For academic & resarch purposes only* Questions, Comments, Concerns? -> Support@FARWizard.com_')
+	st.caption('_*For academic & resarch purposes only - Patent Pending_')
+	st.caption('_Questions, Comments, Concerns? -> Support@FARWizard.com_')
 	st.write('## Ask the FAR a Question!')
 	st.text_area('question', key='question', height=100, placeholder='Enter question here', help='', label_visibility="collapsed", disabled=False)
 
