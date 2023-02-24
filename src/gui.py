@@ -16,7 +16,6 @@ api_key = st.secrets["API_KEY"]
 
 st.set_page_config(layout='centered', page_title=f'{app_name} {__version__}',initial_sidebar_state="collapsed")
 ss = st.session_state
-if 'debug' not in ss: ss['debug'] = {}
 import css
 st.write(f'<style>{css.v1}</style>', unsafe_allow_html=True)
 header1 = st.empty() # for errors / messages
@@ -47,11 +46,6 @@ def index_pdf_file2():
 	index = out
 
 	ss['index'] = index
-	ss['debug']['n_pages'] = len(index['pages'])
-	ss['debug']['n_texts'] = len(index['texts'])
-	ss['debug']['pages'] = index['pages']
-	ss['debug']['texts'] = index['texts']
-	ss['debug']['summary'] = index['summary']
 
 
 
@@ -71,12 +65,6 @@ def ui_output():
 	output = ss.get('output','')
 	st.markdown(output)
 
-def ui_debug():
-	if ss.get('show_debug'):
-		st.write('### debug')
-		st.write(ss.get('debug',{}))
-
-
 def b_ask():
 	disabled = False
 	if st.button('Submit', disabled=disabled, type='primary'):
@@ -93,7 +81,6 @@ def b_ask():
 		with st.spinner('preparing answer'):
 
 			resp = model.query(text, index, task=Task, temperature=temperature, hyde=hyde, hyde_prompt=hyde_prompt, max_frags=max_frags, limit=max_frags+2)
-		ss['debug']['model.query.resp'] = resp
 		
 		q = text.strip()
 		a = resp['text'].strip()
