@@ -38,7 +38,7 @@ def ui_spacer(n=2, line=False, next_n=0):
 		st.write('')
 
 
-@st.cache
+
 def index_pdf_file2():
 	import pickle
 	with open("src/index.pkl", "rb") as f:
