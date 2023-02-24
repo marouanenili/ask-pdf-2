@@ -56,13 +56,7 @@ def index_pdf_file2():
 def ui_question():
 	st.title('First Came the FAR, Then Came FARGPT')
 	st.header('Why FARGPT and why not ChatGPT?')
-	st.subheader('FARGPT is built to semantically search the FAR and provide answers and references whereas ChatGPT searches its entire collection of text to find answers which may not be related to the FAR at all. 
-
-FARGPT searches the FAR PDF located on Acquisition.gov: https://www.acquisition.gov/sites/default/files/current/far/pdf/FAR.pdf
-
-*We are currently experiencing very high demand. If it doesn't work, please try again in a few minutes!*
-
-*For academic & resarch purposes only* Patent-pendig. Questions? -> Support@FARWizard.com')
+	st.subheader('FARGPT is built to semantically search the FAR and provide answers and references whereas ChatGPT searches its entire collection of text to find answers which may not be related to the FAR at all.')
 	st.write('## Ask the FAR a Question!')
 	st.text_area('question', key='question', height=100, placeholder='Enter question here', help='', label_visibility="collapsed", disabled=False)
 
