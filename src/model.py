@@ -101,6 +101,7 @@ def fix_text_problems(text, pg=None):
 	text = re.sub('\s+[-]\s+','',text) # word continuation in the next line
 	return text
 
+@st.cache(ttl=3600)
 def query(text, index, task=None, temperature=0.0, max_frags=1, hyde=False, hyde_prompt=None, limit=None):
 	"get dictionary with the answer for the given question (text)."
 	out = {}
