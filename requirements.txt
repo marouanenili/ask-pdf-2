@@ -1,0 +1,8 @@
+openai
+PyPDF2==2.12.1
+scikit-learn
+numpy
+tiktoken
+pandas
+
+#tomli
