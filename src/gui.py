@@ -10,12 +10,9 @@ import csv
 import streamlit as st
 import pandas as pd
 import time
-import streamlit_analytics
 api_key = st.secrets["API_KEY"] 
 
-with streamlit_analytics.track():
-    st.text_input("Write something")
-    st.button("Click me")
+
 
 st.set_page_config(layout='centered', page_title=f'{app_name} {__version__}',initial_sidebar_state="collapsed")
 ss = st.session_state
