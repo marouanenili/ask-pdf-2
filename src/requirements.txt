@@ -1,4 +1,5 @@
 openai
+streamlit_analytics
 PyPDF2==2.12.1
 scikit-learn
 numpy
