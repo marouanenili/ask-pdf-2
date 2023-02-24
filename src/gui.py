@@ -12,7 +12,7 @@ import pandas as pd
 import time
 
 
-st.set_page_config(layout='centered', page_title=f'{app_name} {__version__}')
+st.set_page_config(layout='centered', page_title=f'{app_name} {__version__}',initial_sidebar_state="collapsed")
 ss = st.session_state
 if 'debug' not in ss: ss['debug'] = {}
 import css
@@ -164,7 +164,6 @@ timer = 1
 def app():
 	global timer
 	st.sidebar.beta_expander("Navigation", expanded=False)
-	st.set_page_config(initial_sidebar_state="collapsed")
 	selection = st.sidebar.radio("Go to", ["Public", "Admin"], index=0)
 	if selection == "Admin":
 		provided_key = st.text_input("Enter the secret key to access this page:",type="password")
