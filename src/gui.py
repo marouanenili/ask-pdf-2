@@ -131,7 +131,7 @@ def output_add(q, a):
 
 
 
-Task = "Answer the question truthfully based on the text below. Include verbatim quote and a comment where to find it in the text (page number). After the quote write a step by step explanation. Use bullet points."
+Task = "Answer the question truthfully based on the text below. Include verbatim quote and a comment where to find it in the text (page and section number). After the quote write a step by step explanation. Use bullet points. Create a one sentence summary of the preceding output."
 api_key = st.secrets["API_KEY"]
 model.use_key(api_key)
 secret_key = st.secrets["password"]
