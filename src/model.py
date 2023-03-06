@@ -102,7 +102,7 @@ def fix_text_problems(text, pg=None):
 	text = re.sub('\s+[-]\s+','',text) # word continuation in the next line
 	return text
 
-@st.cache_data(ttl=3600)
+
 def query(text, index, task=None, temperature=0.0, max_frags=1, hyde=False, hyde_prompt=None, limit=None):
 	"get dictionary with the answer for the given question (text)."
 	out = {}
@@ -153,9 +153,17 @@ def query(text, index, task=None, temperature=0.0, max_frags=1, hyde=False, hyde
 		Question: {text}
 		
 		Answer:""" # TODO: move to prompts.py
+	print(context)
+	#Task = "Answer the question truthfully based on the text below. Include verbatim quote and a comment where to find it in the text (page and section number). After the quote write a step by step explanation. Use bullet points. Create a one sentence summary of the preceding output."
+
+	message = [
+		{"role":"system", "content": "answer ONLY based on the context "+ task },
+		{"role":"system", "content": "Context" + context},
+		{"role":"user", "content": "Question: "+text},
+	]
 	
 	# GET ANSWER
-	resp2 = ai.complete(prompt, temperature=temperature)
+	resp2 = ai.complete(prompt, temperature=temperature,messages = message)
 	answer = resp2['text']
 	usage = resp2['usage']
 	

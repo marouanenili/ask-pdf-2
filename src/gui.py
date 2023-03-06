@@ -10,8 +10,8 @@ import csv
 import streamlit as st
 import pandas as pd
 import time
-api_key = st.secrets["API_KEY"] 
 
+api_key = ""
 
 
 st.set_page_config(layout='centered', page_title=f'{app_name} {__version__}',initial_sidebar_state="collapsed")
@@ -41,7 +41,7 @@ def ui_spacer(n=2, line=False, next_n=0):
 
 def index_pdf_file2():
 	import pickle
-	with open("src/index.pkl", "rb") as f:
+	with open("index.pkl", "rb") as f:
 		out = pickle.load(f)
 	index = out
 
@@ -83,7 +83,7 @@ def b_ask():
 			resp = model.query(text, index, task=Task, temperature=temperature, hyde=hyde, hyde_prompt=hyde_prompt, max_frags=max_frags, limit=max_frags+2)
 		
 		q = text.strip()
-		a = resp['text'].strip()
+		a = resp['text']  #.strip()
 		output_add(q,a)
 
 def b_clear():
@@ -99,18 +99,20 @@ def b_reload():
 		import importlib
 		importlib.reload(prompts)
 
+
 def write_in_csv(q,a):
-	file_path = "src/QAcsv.csv"
+	file_path = "QAcsv.csv"
 	with open(file_path, 'a', newline='\n') as file:
 		writer = csv.writer(file)
 
 		writer.writerow([str(q), str(a)])
 		print("writing in csv")
 	file.close()
-		
+
+
 def output_add(q, a):
-	print(a)
 	write_in_csv(q, a)
+	ss['output'] = ''
 	t = st.empty()
 	if 'output' not in ss:
 		ss['output'] = ""
@@ -131,10 +133,10 @@ def output_add(q, a):
 
 
 
-Task = "Answer the question truthfully based on the text below. Include verbatim quote and a comment where to find it in the text (page and section number). After the quote write a step by step explanation. Use bullet points. Create a one sentence summary of the preceding output."
-api_key = st.secrets["API_KEY"]
+Task = "Answer the question truthfully based on the text below. Include verbatim quote and a comment where to find it in the text (page and section number). After the quote write a step by step explanation. Use - as bullet points. Create a one sentence summary of the preceding output."
+api_key = st.secrets['API_KEY']
 model.use_key(api_key)
-secret_key = st.secrets["password"]
+secret_key = st.secrets['password']
 
 
 
@@ -145,7 +147,7 @@ index_pdf_file2()
 def page2():
 
 	# Load CSV file into a pandas DataFrame
-	df = pd.read_csv('src/QAcsv.csv')
+	df = pd.read_csv('QAcsv.csv')
 
 	# Display the DataFrame in Streamlit
 	st.write(df)
@@ -159,7 +161,7 @@ timer = 1
 def app():
 	global timer
 	st.sidebar.expander("Navigation", expanded=False)
-	selection = st.sidebar.radio("Go to", ["Public", "Admin"], index=0)
+	selection = st.sidebar.radio("", ["Public", "Admin"], index=0)
 	if selection == "Admin":
 		provided_key = st.text_input("Enter the secret key to access this page:",type="password")
 		if provided_key != secret_key:
